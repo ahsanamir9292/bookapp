@@ -1,0 +1,23 @@
+<div class="row">
+	<div class="col-md-12 text-center text-primary"><h1>Books Categories</h1></div>
+</div>
+<br><br>
+	<% @categories.each do |cat| %>
+	<div class="row">
+		<div class="col-md-4"></div>
+	<div style="background-color: #8AD1FF; width: 550px" class="col-md-4">
+		<h2 style="float: left;"><%= cat.name %></h2>
+
+		<p style="float: left;"> &nbsp &nbsp &nbsp<%= link_to "Edit", edit_category_path(cat) %></p>
+
+		<p> &nbsp &nbsp &nbsp<%= link_to "Delete", cat, :confirm => "Are you sure?", :method => :delete %></p>
+
+		<br><br>
+	</div>
+		<div class="col-md-4"></div>
+
+	</div>
+	<br><br>
+	
+<% end %>
+

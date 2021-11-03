@@ -1,0 +1,66 @@
+<div class="row">
+	<div class="col-md-12 text-center text-primary"><h1>ABC Books Store</h1></div>
+</div>
+<br><br>
+<div class="row">
+	<div class="col-md-2"></div>
+	<div class="col-md-4">
+		<% @books.each do |book| %>
+	<div style="float: left;"><%= book.id %>. &nbsp &nbsp</div>
+	<div class="img-event" style="float: left;"><%= link_to image_tag(book.image, style:'width:100px; height:150px'), books_path %></div>
+	<div><h3>&nbsp &nbsp<%= link_to book.title, book , style:'text-decoration: none; color: black;' %></h3></div>
+	<div><p> &nbsp &nbsp &nbsp<%= book.description%></p></div>
+	<% if session[:user_id] %>
+	<div ><p> &nbsp &nbsp &nbsp<%= link_to "Edit", edit_book_path(book) %></p></div>
+	<div>
+	<p> &nbsp &nbsp &nbsp<%= link_to "Delete", book, :confirm => "Are you sure?", :method => :delete %></p>
+	</div>
+	<% end %>
+	<br><br>
+<% end %>
+
+	</div>
+	<div class="col-md-2"></div>
+	<div class="col-md-4 ">
+		<div class="row">
+		<div class="input-group ">
+		  <div class="form-outline">
+		    <input id="search-focus" type="search" id="form1" class="form-control" placeholder="Search By Category" />
+		
+		  </div>
+		  <button type="button" class="btn btn-primary">
+		    <i class="fa fa-search"></i>
+		  </button>
+		</div>
+	</div>
+	<br><br>
+	
+	<% if session[:user_id] %>
+		<div class="row">
+			 &nbsp &nbsp <%= link_to "Logout", logout_path , method: :delete, style: "width: 250px" , class:'btn btn-primary btn-lg' %>
+		</div>
+		<br>
+		<div class="row">
+			 &nbsp &nbsp <%= link_to "Add New Book", new_book_path , style: "width: 250px" , class:'btn btn-primary btn-lg' %>
+		</div>
+		<br>
+		<div class="row">
+			 &nbsp &nbsp <%= link_to "Add New Category", new_category_path , style: "width: 250px" , class:'btn btn-primary btn-lg' %>
+		</div>
+		<br>
+		<div class="row">
+			 &nbsp &nbsp <%= link_to "Show Categories", categories_path , style: "width: 250px" , class:'btn btn-primary btn-lg' %>
+		</div>
+	<% else %>
+		<div class="row">
+			 &nbsp &nbsp <%= link_to "Login as Admin", sign_in_path , style: "width: 250px" , class:'btn btn-primary btn-lg' %>
+		</div>
+		<br>
+	<% end %>
+
+
+	</div>
+	</div>
+
+</div>
+
